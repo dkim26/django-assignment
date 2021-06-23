@@ -1,5 +1,5 @@
 <form method="post">{% csrf_token %}
   {{ form.as_p }}
   <input type="submit" value="Update">
-  <a href="{% url 'bermudas:delete' bermuda.id %}">delete</a>
+  <a href="{% url 'bermuda:delete' bermuda.id %}">delete</a>
 </form>

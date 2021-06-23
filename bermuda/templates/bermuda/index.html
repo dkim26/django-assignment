@@ -1,0 +1,37 @@
+<head>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'style/styles.css' %}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+<center>
+<h1>BermudaCampus</h1>
+<p>please enter one of the following sites</p>
+<h2 class = "info"> <u>Basics info about site:</u> </h2>
+    <p> -The name <span style="color:blue">Bermuda</span> is from the incidents where planes, ships, etc. would get lost when entering the bermuda triangle <br />
+        -The name <span style="color:blue">Campus </span> stems from the word hippocampus which is the area of the brain that stores memories/information <br />
+        -I combined the name to <span style="color:blue">BermudaCampus</span> meaning a place where your lost memories/information are stored in this site<br />
+        -I wanted to create a site where users can store the shows, books, movies, anime, comics, etc. so that they wont forget what they watched/read.
+    </p>
+</center>
+<a href="{% url 'bermuda:anime' %}"> Anime list</a> <br />
+<a href="{% url 'bermuda:comic' %}"> Comic list</a> <br />
+<a href="{% url 'bermuda:film' %}"> Movies/TV list</a> <br />
+<a href="{% url 'bermuda:drama' %}"> Drama list</a> <br />
+{% if bermuda_list %}
+  <ul>
+  {% for bermuda in bermuda_list %}
+    <p>{{ bermuda.message }} </p>
+    <p><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></p>
+    <span><a href="{% url 'bermuda:update' bermuda.id %}">edit</a></span>
+    <span><a href="{% url 'bermuda:delete' bermuda.id %}">delete</a></span>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>Nothing is available at the moment.</p>
+{% endif %}
+<a href="{% url 'bermuda:create' %}"> ADD ITEM </a>
+
+
+
+
+
